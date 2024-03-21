@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>SIP Calculator</h2>
+
+<label for="principal">investment:</label><br>
+<input type="number" id="investment" name="investment"><br>
+<label for="rate">Interest Rate:</label><br>
+<input type="number" id="rate" name="rate"><br>
+<label for="time">Investment Duration:</label><br>
+<input type="range" id="time" name="time" min="1" max="600" value="1" oninput="timeDisplay.value = time.value"><br>
+<output id="timeDisplay">1</output>
+<select id="time-unit">
+  <option value="years">Years</option>
+  <option value="months">Months</option>
+</select><br>
+<label for="target">Target Amount:</label><br>
+<input type="number" id="target" name="target"><br>
+<button onclick="calculateMIP()">Calculate</button>
+
+<p id="result"></p>
+
+<table id="investmentTable">
+  <tr>
+    <th>Month</th>
+    <th>Investment</th>
+    <th>Maturity Value</th>
+  </tr>
+</table>
+
+<script>
+function calculateMIP() {
+  let investment = parseFloat(document.getElementById("investment").value);
+  const rate = parseFloat(document.getElementById("rate").value) / 100;
+  let time = parseFloat(document.getElementById("time").value);
+  const target = parseFloat(document.getElementById("target").value);
+  const timeUnit = document.getElementById("time-unit").value;
+  let table = document.getElementById("investmentTable");
+
+  if (timeUnit === "years") {
+    time *= 12; // convert years to months
+  }
+
+  let totalInvestment = 0;
+  let maturityValue = 0;
+
+  for (let i = 0; i < time; i++) {
+    totalInvestment += investment;
+    maturityValue = (maturityValue + investment) * (1 + rate / 12);
+  }
+
+  const percentage = (maturityValue / target) * 100;
+  const shortfall = target - maturityValue;
+  const interestEarned = maturityValue - totalInvestment;
+  document.getElementById("result").innerHTML = `Total Investment: ${totalInvestment.toFixed(2)}, Interest Earned: ${interestEarned.toFixed(2)}, Maturity Value: ${maturityValue.toFixed(2)}, Percentage of Target: ${percentage.toFixed(2)}%`;
+
+  while (table.rows.length > 1) {
+    table.deleteRow(1);
+  }
+
+  for (let i = 0; i < time; i++) {
+    totalInvestment += investment;
+    maturityValue = (maturityValue + investment) * (1 + rate / 12);
+
+    // Add a row to the table for each month
+    let row = table.insertRow(-1);
+    let cell1 = row.insertCell(0);
+    let cell2 = row.insertCell(1);
+    let cell3 = row.insertCell(2);
+    
+    if (timeUnit === "years") {
+      cell1.innerHTML = Math.floor(i / 12) + 1; // Year
+      cell2.innerHTML = investment.toFixed(2);
+      cell3.innerHTML = maturityValue.toFixed(2);
+    } else {
+      cell1.innerHTML = i + 1; // Month
+      cell2.innerHTML = investment.toFixed(2);
+      cell3.innerHTML = maturityValue.toFixed(2);
+    }
+  }
+}
+</script>
+
+</body>
+</html>

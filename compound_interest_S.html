@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>MIP Calculator</h2>
+
+<form id="mipForm">
+  <label for="target">Target Amount:</label><br>
+  <input type="number" id="target" name="target" value="100000"><br>
+  <label for="rate">Annual Interest Rate (as a decimal):</label><br>
+  <input type="number" id="rate" name="rate" value="0.05"><br>
+  <label for="investment">Monthly Investment:</label><br>
+  <input type="number" id="investment" name="investment" value="1000"><br>
+  <label for="time">Time (in months):</label><br>
+  <input type="number" id="time" name="time" value="60"><br>
+  <input type="button" value="Check Monthly Investment" onclick="calculateMIP()">
+  <input type="button" value="Check Required Time" onclick="calculateTime()">
+</form>
+
+<p id="result"></p>
+
+</body>
+</html>
+
+<script>
+    function calculateMIP() {
+        const target = parseFloat(document.getElementById("target").value);
+        const rate = parseFloat(document.getElementById("rate").value);
+        const time = parseFloat(document.getElementById("time").value);
+
+        let suggestedInvestment;
+        let totalInvestment = 0;
+        let maturityValue = 0;
+
+        // Calculate the suggested monthly investment to reach the target
+        for (suggestedInvestment = 0; maturityValue < target; suggestedInvestment += 0.01) {
+            totalInvestment = 0;
+            maturityValue = 0;
+            for (let i = 0; i < time; i++) {
+            totalInvestment += suggestedInvestment;
+            maturityValue = (maturityValue + suggestedInvestment) * (1 + rate / 12);
+            }
+        }
+
+        document.getElementById("result").innerHTML = `Suggested Monthly Investment to Reach Target: ${suggestedInvestment.toFixed(2)}`;
+    }
+
+    function calculateTime() {
+        const target = parseFloat(document.getElementById("target").value);
+        const rate = parseFloat(document.getElementById("rate").value);
+        const investment = parseFloat(document.getElementById("investment").value);
+
+        let totalInvestment = 0;
+        let maturityValue = 0;
+        let time = 0;
+
+        // Calculate the number of months (and hence years) to reach the target
+        while (maturityValue < target) {
+            totalInvestment += investment;
+            maturityValue = (maturityValue + investment) * (1 + rate / 12);
+            time++;
+        }
+
+        const years = Math.floor(time / 12);
+        const months = time % 12;
+
+        document.getElementById("result").innerHTML = `Time to Reach Target: ${years} years and ${months} months`;
+    }
+</script>
