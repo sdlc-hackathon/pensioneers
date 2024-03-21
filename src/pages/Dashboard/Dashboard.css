@@ -85,3 +85,55 @@ hr {
 .chart-container{
   margin: 1rem
 }
+
+  .welcome-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative; /* Added for logo positioning */
+  }
+  h1 {
+    color: #333;
+    float:right;
+    margin: 0; /* Remove margin */
+    padding-bottom: 50px;
+  }
+  h2 {
+    color: #333;
+    margin: 0; /* Remove margin */
+  }
+  p {
+    color: #666;
+    text-align: center;
+  }
+  .form-group {
+    margin-bottom: 15px;
+  }
+  input[type='text'],
+  input[type='email'],
+  input[type='date'],
+  input[type='number'] {
+    width: calc(100% - 22px); /* Adjusted width to prevent scrolling */
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  .button {
+    width: 100%;
+    padding: 10px;
+    background-color: #7ca655;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .button:hover {
+    background-color: #4cae4c;
+  }
+
+.image-container{
+    display: flex;
+    justify-content: right;
+}

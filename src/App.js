@@ -10,7 +10,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login />} /> 
         <Route path="/dashboard" element={<Dashboard user={authUser} />} />
         <Route path="/rewards" element={<Rewards />} />
         {/* <Route path="/savings-goals" element={<SavingsGoals />} />

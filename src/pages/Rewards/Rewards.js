@@ -11,7 +11,7 @@ const mockRewards = [
 
 const Rewards = () => {
   const navigate = useNavigate
-  const [points, setPoints] = useState(0);
+  const [points, setPoints] = useState(900);
 
   const handlePointsChange = (event) => {
     setPoints(event.target.value);
@@ -33,13 +33,8 @@ const Rewards = () => {
     <div className="rewards-container">
       <h1>Rewards</h1>
       <div className="points-box">
-        <h2>Points:</h2>
-        <input
-          type="number"
-          value={points}
-          onChange={handlePointsChange}
-          className="points-input"
-        />
+        <h2>Points: {points}</h2>
+        
       </div>
       <br />
       <ul className="rewards-list">
