@@ -4,6 +4,7 @@ import { Chart as ChartJS } from 'chart.js/auto';
 // src/components/Dashboard.js
 import { Link } from 'react-router-dom';
 import OptionButton from '../../components/OptionButton';
+import './Dashboard.css'
 
 // Your other imports...
 

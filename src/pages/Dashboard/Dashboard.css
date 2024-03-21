@@ -81,3 +81,7 @@ hr {
 .checkboxContainer hr {
   padding: .5em 0;
 }
+
+.chart-container{
+  margin: 1rem
+}
