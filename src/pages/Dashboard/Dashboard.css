@@ -1,68 +1,83 @@
-/* Dashboard.css */
-.dashboard-container {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    background-color: #f4f4f4;
-  }
-  
-  .dashboard-header {
-    color: #333;
-    margin-bottom: 30px;
-  }
-  
-  .dashboard-links {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column; /* Ensures vertical layout */
-    align-items: center;
-    width: 100%;
-  }
+html,
+body,
+#root,
+#root>.row {
+  background: #FCFDFE;
+  height: 100%;
+  margin: 0 auto;
+  font-size: 14px;
+  font-family: Archivo, sans-serif !important;
+}
 
-  .dashboard-links li{
-    margin-top: 3rem;
-  }
-  
-  .dashboard-link {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 8px;
-    margin: 10px 0; /* Increase space between buttons */
-    text-decoration: none;
-    width: 80%; /* Adjust for better spacing */
-    text-align: center;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    transition: background-color 0.3s, transform 0.3s;
-  }
-  
-  .dashboard-link:hover, .dashboard-link:focus {
-    background-color: #0056b3;
-    transform: translateY(-2px);
-  }
-  
-  /* Adjustments for larger screens - ensures vertical layout is only for mobile */
-  @media (min-width: 768px) {
-    .dashboard-links {
-      flex-direction: row; /* Horizontal layout on larger screens */
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-  
-    .dashboard-link {
-      width: calc(50% - 40px); /* Adjust width for spacing */
-      margin: 10px; /* Adjust margin for spacing */
-    }
-  }
+/* Change the white to any color */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
 
-  .chart-container {
-    width: 100%;
-    max-width: 600px;
-    margin: 20px auto;
-  }
-  
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.fullHeight {
+  height: 100%;
+}
+
+a,
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none;
+  color: inherit !important;
+}
+
+.linkColour {
+  color: #008FD4 !important;
+}
+
+.greyLinkText {
+  color: #B6B6BF;
+  cursor: pointer;
+}
+
+.cyberCareButton {
+  background: #EBECF1;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-weight: 500;
+}
+
+.pushRight {
+  float: right;
+}
+
+hr {
+  height: 1px;
+  color: #EBECF1;
+  width: 100%;
+}
+
+.searchInput {
+  display: flex;
+  flex-flow: row;
+  align-content: flex-end;
+}
+
+.displayChildrenInline,
+.displayChildrenInline * {
+  display: inline;
+}
+
+.modal-header {
+  border-bottom: 1px solid white !important;
+  padding: 1.25em 1em;
+}
+
+.checkboxContainer hr {
+  padding: .5em 0;
+}
